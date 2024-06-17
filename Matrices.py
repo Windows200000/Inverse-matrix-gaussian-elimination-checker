@@ -35,7 +35,7 @@ def draw(text):
   print (text)
 
 while True:
-  draw("clear(cl), define(def), line(number):")
+  draw("clear(cl), define(def), switch(sw), line(number):")
   cli = input()
   match cli:
     case "clear" | "cl":
@@ -53,6 +53,18 @@ while True:
             val = Fraction(val)
           Current[line][column] = val
       #break
+      
+    case "switch" | "sw":
+      text = "line 1:"
+      draw(text)
+      line1 = int(input()) - 1
+      text += f" {line1 + 1} line 2:"
+      draw(text)
+      line2 = int(input()) - 1
+      tmpLine = Current[line1]
+      Current[line1] = Current[line2]
+      Current[line2] = tmpLine
+      print(Current)
 
     case source:
       source = int(source) - 1
